@@ -1,3 +1,6 @@
+"Client";
+
+import React from "react";
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -8,12 +11,12 @@ export default function QuickStartPage() {
     <div className="py-8">
       <div className="mb-8">
         <Link href="/docs" className="text-purple-400 hover:text-purple-300 flex items-center mb-2">
-          <ArrowLeft className="mr-1 h-4 w-4" /> Back to introduction
+          <ArrowLeft className="mr-1 h-4 w-4" /> Back to Documentation
         </Link>
         <h1 className="text-4xl font-bold mb-6 purple-gradient-text">Quick Start Guide</h1>
         <p className="text-xl text-gray-300 mb-6">
           Get up and running with Reflect in minutes. This guide will walk you through the basics of creating notes,
-          using the AI chat, and connecting ideas.
+          using the AI assistant, and connecting ideas.
         </p>
       </div>
 
@@ -67,7 +70,7 @@ export default function QuickStartPage() {
           <div className="relative purple-glow rounded-xl overflow-hidden border border-purple-500/20">
             <div className="absolute inset-0 bg-gradient-to-b from-purple-600/10 to-transparent"></div>
             <Image
-              src="/images/Notes.svg?height=300&width=500"
+              src="/img/Computer.jpeg?height=300&width=500"
               alt="Reflect signup screen"
               width={500}
               height={300}
@@ -163,7 +166,7 @@ export default function QuickStartPage() {
           <div className="relative purple-glow rounded-xl overflow-hidden border border-purple-500/20">
             <div className="absolute inset-0 bg-gradient-to-b from-purple-600/10 to-transparent"></div>
             <Image
-              src="/images/WhatsApp.svg?height=300&width=500"
+              src="/img/Code-1.png?height=250&width=450"
               alt="Creating a note in Reflect"
               width={500}
               height={300}
@@ -281,7 +284,7 @@ export default function QuickStartPage() {
           <div className="relative purple-glow rounded-xl overflow-hidden border border-purple-500/20">
             <div className="absolute inset-0 bg-gradient-to-b from-purple-600/10 to-transparent"></div>
             <Image
-              src="/gif/3D-Notes.gif?height=400&width=700"
+              src="/img/Code-2.png?height=300&width=500"
               alt="Using the AI assistant in Reflect"
               width={500}
               height={300}
@@ -301,7 +304,7 @@ export default function QuickStartPage() {
           <div className="relative purple-glow rounded-xl overflow-hidden border border-purple-500/20">
             <div className="absolute inset-0 bg-gradient-to-b from-purple-600/10 to-transparent"></div>
             <Image
-              src="/Svg/Signature.svg?height=300&width=500"
+              src="/img/Code-3.png?height=300&width=500"
               alt="Connecting notes in Reflect"
               width={500}
               height={300}
@@ -366,7 +369,7 @@ export default function QuickStartPage() {
             <h3 className="text-xl font-bold mb-3">Explore Features</h3>
             <p className="text-gray-400 mb-4">Discover all the powerful features Reflect has to offer.</p>
             <Button asChild variant="outline" className="w-full border-purple-500/30 hover:bg-purple-500/10">
-              <Link href="/features">View Features</Link>
+              <Link href="/docs/features">View Features</Link>
             </Button>
           </div>
 

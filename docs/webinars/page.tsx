@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import RealTimeChatDiagram from "@/components/docs/real-time-chat-diagram"
 
-export default function RealTimeChatPage() {
+export default function WebinarsPage() {
   return (
     <div className="py-8">
       <div className="mb-8">

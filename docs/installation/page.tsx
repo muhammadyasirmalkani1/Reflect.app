@@ -1,3 +1,5 @@
+"Client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -67,7 +69,7 @@ export default function InstallationPage() {
           <div className="relative purple-glow rounded-xl overflow-hidden border border-purple-500/20">
             <div className="absolute inset-0 bg-gradient-to-b from-purple-600/10 to-transparent"></div>
             <Image
-              src="/placeholder.svg?height=300&width=500"
+              src="/img/Installation.png?height=300&width=500"
               alt="Reflect signup screen"
               width={500}
               height={300}
@@ -114,7 +116,7 @@ export default function InstallationPage() {
           <div className="feature-card text-center">
             <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
               <svg className="w-12 h-12 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M21 18v3H3V3h18v3H10v12h11zm-9-2V8H5v8h7z" />
+                <path d="M2118v3H3V3h18v3H10v12h11zm-9-2V8H5v8h7z" />
               </svg>
             </div>
             <h3 className="text-lg font-bold mb-2">Web App</h3>
@@ -163,7 +165,7 @@ export default function InstallationPage() {
           <div className="relative purple-glow rounded-xl overflow-hidden border border-purple-500/20">
             <div className="absolute inset-0 bg-gradient-to-b from-purple-600/10 to-transparent"></div>
             <Image
-              src="/placeholder.svg?height=300&width=500"
+              src="/img/thinking.jpeg?height=300&width=500"
               alt="Creating a note in Reflect"
               width={500}
               height={300}
@@ -281,7 +283,7 @@ export default function InstallationPage() {
           <div className="relative purple-glow rounded-xl overflow-hidden border border-purple-500/20">
             <div className="absolute inset-0 bg-gradient-to-b from-purple-600/10 to-transparent"></div>
             <Image
-              src="/placeholder.svg?height=300&width=500"
+              src="/img/keyboard.jpeg?height=300&width=500"
               alt="Using the AI assistant in Reflect"
               width={500}
               height={300}
@@ -301,7 +303,7 @@ export default function InstallationPage() {
           <div className="relative purple-glow rounded-xl overflow-hidden border border-purple-500/20">
             <div className="absolute inset-0 bg-gradient-to-b from-purple-600/10 to-transparent"></div>
             <Image
-              src="/placeholder.svg?height=300&width=500"
+              src="/img/reflect.png?height=300&width=500"
               alt="Connecting notes in Reflect"
               width={500}
               height={300}

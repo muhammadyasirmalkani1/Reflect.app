@@ -1,858 +1,213 @@
-"client";
+"Client"
 
-import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import { Keyboard, Command, Search, Edit, FileText, Zap, Settings, Navigation } from "lucide-react"
 
-export default function AdvancedPage() {
-  return (
-    <><div className="py-8">
-      {/* Content inside the div */}
-    </div><div className="mb-8">
-        <Link href="/docs/advanced/keyboard-shortcuts" className="text-purple-400 hover:text-purple-300 flex items-center mb-2">
-          <ArrowLeft className="mr-1 h-4 w-4" /> Back to Server Setup
-        </Link>
-        <h1 className="text-4xl font-bold mb-6 purple-gradient-text">Client Implementation</h1>
-        <p className="text-xl text-gray-300 mb-6">
-          Learn how to implement the client-side components of a real-time chat system in your React application.
-        </p>
-      </div><div className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 purple-gradient-text">Setting Up the Socket.IO Client</h2>
-        <p className="text-gray-300 mb-6">
-          The client-side implementation of our real-time chat system involves connecting to the WebSocket server,
-          managing chat state, and providing a responsive user interface. We'll use Socket.IO client with React and
-          Zustand for state management.
-        </p>
+export default function KeyboardShortcutsPage() {
+  const shortcutCategories = [
+    {
+      title: "Navigation",
+      icon: Navigation,
+      shortcuts: [
+        { keys: ["Cmd", "K"], description: "Quick search", windows: ["Ctrl", "K"] },
+        { keys: ["Cmd", "P"], description: "Command palette", windows: ["Ctrl", "P"] },
+        { keys: ["Cmd", "G"], description: "Go to graph view", windows: ["Ctrl", "G"] },
+        { keys: ["Cmd", "1"], description: "Go to notes", windows: ["Ctrl", "1"] },
+        { keys: ["Cmd", "2"], description: "Go to daily notes", windows: ["Ctrl", "2"] },
+        { keys: ["Cmd", "3"], description: "Go to templates", windows: ["Ctrl", "3"] },
+        { keys: ["Cmd", "\\"], description: "Toggle sidebar", windows: ["Ctrl", "\\"] },
+        { keys: ["Cmd", "Shift", "F"], description: "Focus mode", windows: ["Ctrl", "Shift", "F"] },
+      ],
+    },
+    {
+      title: "Note Creation & Editing",
+      icon: Edit,
+      shortcuts: [
+        { keys: ["Cmd", "N"], description: "New note", windows: ["Ctrl", "N"] },
+        { keys: ["Cmd", "Shift", "N"], description: "New daily note", windows: ["Ctrl", "Shift", "N"] },
+        { keys: ["Cmd", "D"], description: "Duplicate note", windows: ["Ctrl", "D"] },
+        { keys: ["Cmd", "S"], description: "Save note", windows: ["Ctrl", "S"] },
+        { keys: ["Cmd", "Z"], description: "Undo", windows: ["Ctrl", "Z"] },
+        { keys: ["Cmd", "Shift", "Z"], description: "Redo", windows: ["Ctrl", "Y"] },
+        { keys: ["Cmd", "A"], description: "Select all", windows: ["Ctrl", "A"] },
+        { keys: ["Cmd", "X"], description: "Cut", windows: ["Ctrl", "X"] },
+        { keys: ["Cmd", "C"], description: "Copy", windows: ["Ctrl", "C"] },
+        { keys: ["Cmd", "V"], description: "Paste", windows: ["Ctrl", "V"] },
+      ],
+    },
+    {
+      title: "Text Formatting",
+      icon: FileText,
+      shortcuts: [
+        { keys: ["Cmd", "B"], description: "Bold text", windows: ["Ctrl", "B"] },
+        { keys: ["Cmd", "I"], description: "Italic text", windows: ["Ctrl", "I"] },
+        { keys: ["Cmd", "U"], description: "Underline text", windows: ["Ctrl", "U"] },
+        { keys: ["Cmd", "Shift", "S"], description: "Strikethrough", windows: ["Ctrl", "Shift", "S"] },
+        { keys: ["Cmd", "E"], description: "Inline code", windows: ["Ctrl", "E"] },
+        { keys: ["Cmd", "Shift", "C"], description: "Code block", windows: ["Ctrl", "Shift", "C"] },
+        { keys: ["Cmd", "K"], description: "Insert link", windows: ["Ctrl", "K"] },
+        { keys: ["Cmd", "Shift", "H"], description: "Highlight text", windows: ["Ctrl", "Shift", "H"] },
+      ],
+    },
+    {
+      title: "AI Assistant",
+      icon: Zap,
+      shortcuts: [
+        { keys: ["Cmd", "J"], description: "Open AI assistant", windows: ["Ctrl", "J"] },
+        { keys: ["Cmd", "Shift", "A"], description: "AI autocomplete", windows: ["Ctrl", "Shift", "A"] },
+        { keys: ["Cmd", "Shift", "S"], description: "AI summarize", windows: ["Ctrl", "Shift", "S"] },
+        { keys: ["Cmd", "Shift", "T"], description: "AI translate", windows: ["Ctrl", "Shift", "T"] },
+        { keys: ["Cmd", "Shift", "E"], description: "AI expand", windows: ["Ctrl", "Shift", "E"] },
+        { keys: ["Cmd", "Shift", "R"], description: "AI rewrite", windows: ["Ctrl", "Shift", "R"] },
+      ],
+    },
+    {
+      title: "Search & Discovery",
+      icon: Search,
+      shortcuts: [
+        { keys: ["Cmd", "F"], description: "Find in note", windows: ["Ctrl", "F"] },
+        { keys: ["Cmd", "Shift", "F"], description: "Find in all notes", windows: ["Ctrl", "Shift", "F"] },
+        { keys: ["Cmd", "G"], description: "Find next", windows: ["F3"] },
+        { keys: ["Cmd", "Shift", "G"], description: "Find previous", windows: ["Shift", "F3"] },
+        { keys: ["Cmd", "R"], description: "Replace", windows: ["Ctrl", "H"] },
+        { keys: ["Cmd", "Shift", "R"], description: "Replace all", windows: ["Ctrl", "Shift", "H"] },
+      ],
+    },
+    {
+      title: "System & Settings",
+      icon: Settings,
+      shortcuts: [
+        { keys: ["Cmd", ","], description: "Open preferences", windows: ["Ctrl", ","] },
+        { keys: ["Cmd", "Shift", "P"], description: "Command palette", windows: ["Ctrl", "Shift", "P"] },
+        { keys: ["Cmd", "Shift", "D"], description: "Toggle dark mode", windows: ["Ctrl", "Shift", "D"] },
+        { keys: ["Cmd", "Shift", "I"], description: "Developer tools", windows: ["F12"] },
+        { keys: ["Cmd", "Q"], description: "Quit application", windows: ["Alt", "F4"] },
+        { keys: ["Cmd", "W"], description: "Close window", windows: ["Ctrl", "W"] },
+      ],
+    },
+  ]
 
-        <div className="feature-card mb-8">
-          <h3 className="text-xl font-bold mb-3">Socket.IO Client Setup</h3>
-          <p className="text-gray-300 mb-4">
-            First, let's create a service to manage our Socket.IO connection:
-          </p>
-
-          <Tabs defaultValue="typescript" className="mb-6">
-            <TabsList className="bg-black/50 border border-purple-500/20">
-              <TabsTrigger value="typescript">TypeScript</TabsTrigger>
-              <TabsTrigger value="javascript">JavaScript</TabsTrigger>
-            </TabsList>
-            <TabsContent value="typescript" className="mt-4">
-              <div className="bg-black/50 p-4 rounded-md border border-purple-500/20 font-mono text-sm">
-                <pre className="text-gray-300 whitespace-pre-wrap">
-                  {`// lib/socket-service.ts
-import { io, Socket } from 'socket.io-client';
-import { getAuthToken } from '@/lib/auth';
-
-// Define types
-export interface User {
-  id: string;
-  name: string;
-  avatar: string;
-}
-
-export interface Message {
-  id: string;
-  roomId: string;
-  sender: User;
-  content: string;
-  attachments: Attachment[];
-  timestamp: Date;
-  readBy: string[];
-  reactions: Reaction[];
-  edited: boolean;
-  deleted: boolean;
-  metadata?: {
-    clientId?: string;
-    mentions?: string[];
-    codeSnippets?: CodeSnippet[];
-  };
-}
-
-export interface Attachment {
-  id: string;
-  type: string;
-  url: string;
-  name: string;
-  size: number;
-}
-
-export interface Reaction {
-  emoji: string;
-  users: string[];
-}
-
-export interface CodeSnippet {
-  language: string;
-  code: string;
-}
-
-export interface TypingIndicator {
-  userId: string;
-  username: string;
-  isTyping: boolean;
-}
-
-// Socket events
-export type SocketEventHandlers = {
-  'connect': () => void;
-  'disconnect': () => void;
-  'connect_error': (err: Error) => void;
-  'new-message': (message: Message) => void;
-  'user-joined': (data: { userId: string; username: string }) => void;
-  'user-left': (data: { userId: string; username: string }) => void;
-  'user-typing': (data: TypingIndicator) => void;
-  'messages-read': (data: { userId: string; messageIds: string[] }) => void;
-};
-
-class SocketService {
-  private socket: Socket | null = null;
-  private eventHandlers: Partial<SocketEventHandlers> = {};
-
-  // Initialize the socket connection
-  connect() {
-    if (this.socket) return;
-
-    const token = getAuthToken();
-    if (!token) {
-      console.error('No auth token available');
-      return;
-    }
-
-    this.socket = io(process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:4000', {
-      auth: { token },
-      reconnection: true,
-      reconnectionAttempts: 5,
-      reconnectionDelay: 1000,
-      reconnectionDelayMax: 5000,
-      timeout: 20000,
-    });
-
-    // Set up event listeners
-    this.socket.on('connect', () => {
-      console.log('Socket connected');
-      this.eventHandlers.connect?.();
-    });
-
-    this.socket.on('disconnect', () => {
-      console.log('Socket disconnected');
-      this.eventHandlers.disconnect?.();
-    });
-
-    this.socket.on('connect_error', (err) => {
-      console.error('Socket connection error:', err);
-      this.eventHandlers.connect_error?.(err);
-    });
-
-    // Set up message event listeners
-    this.socket.on('new-message', (message) => {
-      this.eventHandlers['new-message']?.(message);
-    });
-
-    this.socket.on('user-joined', (data) => {
-      this.eventHandlers['user-joined']?.(data);
-    });
-
-    this.socket.on('user-left', (data) => {
-      this.eventHandlers['user-left']?.(data);
-    });
-
-    this.socket.on('user-typing', (data) => {
-      this.eventHandlers['user-typing']?.(data);
-    });
-
-    this.socket.on('messages-read', (data) => {
-      this.eventHandlers['messages-read']?.(data);
-    });
-  }
-
-  // Disconnect the socket
-  disconnect() {
-    if (!this.socket) return;
-    this.socket.disconnect();
-    this.socket = null;
-  }
-
-  // Join a chat room
-  joinRoom(roomId: string) {
-    if (!this.socket) {
-      console.error('Socket not connected');
-      return;
-    }
-    this.socket.emit('join-room', roomId);
-  }
-
-  // Send a message
-  sendMessage(roomId: string, content: string, attachments: Attachment[] = []) {
-    if (!this.socket) {
-      console.error('Socket not connected');
-      return;
-    }
-    
-    const clientId = Date.now().toString(36) + Math.random().toString(36).substr(2);
-    
-    this.socket.emit('send-message', {
-      roomId,
-      content,
-      attachments,
-      metadata: {
-        clientId
-      }
-    });
-    
-    return clientId; // Return client ID for optimistic updates
-  }
-
-  // Send typing indicator
-  sendTyping(roomId: string, isTyping: boolean) {
-    if (!this.socket) {
-      console.error('Socket not connected');
-      return;
-    }
-    this.socket.emit('typing', { roomId, isTyping });
-  }
-
-  // Register event handlers
-  on<T extends keyof SocketEventHandlers>(
-    event: T,
-    handler: SocketEventHandlers[T]
-  ) {
-    this.eventHandlers[event] = handler;
-  }
-
-  // Check if socket is connected
-  isConnected() {
-    return this.socket?.connected || false;
-  }
-}
-
-// Create a singleton instance
-const socketService = new SocketService();
-
-export default socketService;`}
-                </pre>
-              </div>
-            </TabsContent>
-            <TabsContent value="javascript" className="mt-4">
-              <div className="bg-black/50 p-4 rounded-md border border-purple-500/20 font-mono text-sm">
-                <pre className="text-gray-300 whitespace-pre-wrap">
-                  {`// lib/socket-service.js
-import { io } from 'socket.io-client';
-import { getAuthToken } from '@/lib/auth';
-
-class SocketService {
-  constructor() {
-    this.socket = null;
-    this.eventHandlers = {};
-  }
-
-  // Initialize the socket connection
-  connect() {
-    if (this.socket) return;
-
-    const token = getAuthToken();
-    if (!token) {
-      console.error('No auth token available');
-      return;
-    }
-
-    this.socket = io(process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:4000', {
-      auth: { token },
-      reconnection: true,
-      reconnectionAttempts: 5,
-      reconnectionDelay: 1000,
-      reconnectionDelayMax: 5000,
-      timeout: 20000,
-    });
-
-    // Set up event listeners
-    this.socket.on('connect', () => {
-      console.log('Socket connected');
-      this.eventHandlers.connect?.();
-    });
-
-    this.socket.on('disconnect', () => {
-      console.log('Socket disconnected');
-      this.eventHandlers.disconnect?.();
-    });
-
-    this.socket.on('connect_error', (err) => {
-      console.error('Socket connection error:', err);
-      this.eventHandlers.connect_error?.(err);
-    });
-
-    // Set up message event listeners
-    this.socket.on('new-message', (message) => {
-      this.eventHandlers['new-message']?.(message);
-    });
-
-    this.socket.on('user-joined', (data) => {
-      this.eventHandlers['user-joined']?.(data);
-    });
-
-    this.socket.on('user-left', (data) => {
-      this.eventHandlers['user-left']?.(data);
-    });
-
-    this.socket.on('user-typing', (data) => {
-      this.eventHandlers['user-typing']?.(data);
-    });
-
-    this.socket.on('messages-read', (data) => {
-      this.eventHandlers['messages-read']?.(data);
-    });
-  }
-
-  // Disconnect the socket
-  disconnect() {
-    if (!this.socket) return;
-    this.socket.disconnect();
-    this.socket = null;
-  }
-
-  // Join a chat room
-  joinRoom(roomId) {
-    if (!this.socket) {
-      console.error('Socket not connected');
-      return;
-    }
-    this.socket.emit('join-room', roomId);
-  }
-
-  // Send a message
-  sendMessage(roomId, content, attachments = []) {
-    if (!this.socket) {
-      console.error('Socket not connected');
-      return;
-    }
-    
-    const clientId = Date.now().toString(36) + Math.random().toString(36).substr(2);
-    
-    this.socket.emit('send-message', {
-      roomId,
-      content,
-      attachments,
-      metadata: {
-        clientId
-      }
-    });
-    
-    return clientId; // Return client ID for optimistic updates
-  }
-
-  // Send typing indicator
-  sendTyping(roomId, isTyping) {
-    if (!this.socket) {
-      console.error('Socket not connected');
-      return;
-    }
-    this.socket.emit('typing', { roomId, isTyping });
-  }
-
-  // Register event handlers
-  on(event, handler) {
-    this.eventHandlers[event] = handler;
-  }
-
-  // Check if socket is connected
-  isConnected() {
-    return this.socket?.connected || false;
-  }
-}
-
-// Create a singleton instance
-const socketService = new SocketService();
-
-export default socketService;`}
-                </pre>
-              </div>
-            </TabsContent>
-          </Tabs>
-        </div>
-      </div><div className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 purple-gradient-text">Chat State Management</h2>
-        <p className="text-gray-300 mb-6">
-          Next, let's create a Zustand store to manage our chat state. This will handle messages, typing indicators, and
-          user presence:
-        </p>
-
-        <div className="feature-card mb-8">
-          <h3 className="text-xl font-bold mb-3">Chat Store with Zustand</h3>
-
-          <Tabs defaultValue="typescript" className="mb-6">
-            <TabsList className="bg-black/50 border border-purple-500/20">
-              <TabsTrigger value="typescript">TypeScript</TabsTrigger>
-              <TabsTrigger value="javascript">JavaScript</TabsTrigger>
-            </TabsList>
-            <TabsContent value="typescript" className="mt-4">
-              <div className="bg-black/50 p-4 rounded-md border border-purple-500/20 font-mono text-sm">
-                <pre className="text-gray-300 whitespace-pre-wrap">
-                  {`// lib/stores/chat-store.ts
-import { create } from 'zustand';
-import { devtools, persist } from 'zustand/middleware';
-import socketService, { Message, TypingIndicator, User } from '@/lib/socket-service';
-import { fetchMessages } from '@/lib/api';
-
-interface ChatState {
-  // Current active room
-  currentRoomId: string | null;
-  
-  // Messages by room ID
-  messagesByRoom: Record<string, Message[]>;
-  
-  // Optimistic messages that are pending confirmation
-  pendingMessages: Record<string, Message[]>;
-  
-  // Users currently typing in each room
-  typingUsers: Record<string, TypingIndicator[]>;
-  
-  // Online users in each room
-  onlineUsers: Record<string, User[]>;
-  
-  // Loading states
-  isLoadingMessages: boolean;
-  isLoadingMoreMessages: boolean;
-  
-  // Actions
-  setCurrentRoom: (roomId: string) => void;
-  loadMessages: (roomId: string) => Promise<void>;
-  loadMoreMessages: (roomId: string, beforeTimestamp: string) => Promise<void>;
-  sendMessage: (content: string, attachments?: any[]) => void;
-  setTyping: (isTyping: boolean) => void;
-  markMessagesAsRead: (messageIds: string[]) => void;
-  
-  // Socket event handlers
-  handleNewMessage: (message: Message) => void;
-  handleUserTyping: (data: TypingIndicator) => void;
-  handleUserJoined: (data: { userId: string; username: string }) => void;
-  handleUserLeft: (data: { userId: string; username: string }) => void;
-  handleMessagesRead: (data: { userId: string; messageIds: string[] }) => void;
-}
-
-const useChatStore = create<ChatState>()(
-  devtools(
-    persist(
-      (set, get) => ({
-        // Initial state
-        currentRoomId: null,
-        messagesByRoom: {},
-        pendingMessages: {},
-        typingUsers: {},
-        onlineUsers: {},
-        isLoadingMessages: false,
-        isLoadingMoreMessages: false,
-        
-        // Set current room and join it
-        setCurrentRoom: (roomId) => {
-          set({ currentRoomId: roomId });
-          socketService.joinRoom(roomId);
-          
-          // Initialize room data if it doesn't exist
-          set((state) => ({
-            messagesByRoom: {
-              ...state.messagesByRoom,
-              [roomId]: state.messagesByRoom[roomId] || [],
-            },
-            pendingMessages: {
-              ...state.pendingMessages,
-              [roomId]: state.pendingMessages[roomId] || [],
-            },
-            typingUsers: {
-              ...state.typingUsers,
-              [roomId]: state.typingUsers[roomId] || [],
-            },
-            onlineUsers: {
-              ...state.onlineUsers,
-              [roomId]: state.onlineUsers[roomId] || [],
-            },
-          }));
-          
-          // Load messages for this room
-          get().loadMessages(roomId);
-        },
-        
-        // Load messages for a room
-        loadMessages: async (roomId) => {
-          set({ isLoadingMessages: true });
-          
-          try {
-            const messages = await fetchMessages(roomId);
-            
-            set((state) => ({
-              messagesByRoom: {
-                ...state.messagesByRoom,
-                [roomId]: messages,
-              },
-              isLoadingMessages: false,
-            }));
-          } catch (error) {
-            console.error('Error loading messages:', error);
-            set({ isLoadingMessages: false });
-          }
-        },
-        
-        // Load more messages (pagination)
-        loadMoreMessages: async (roomId, beforeTimestamp) => {
-          set({ isLoadingMoreMessages: true });
-          
-          try {
-            const messages = await fetchMessages(roomId, { before: beforeTimestamp });
-            
-            set((state) => ({
-              messagesByRoom: {
-                ...state.messagesByRoom,
-                [roomId]: [...messages, ...state.messagesByRoom[roomId]],
-              },
-              isLoadingMoreMessages: false,
-            }));
-          } catch (error) {
-            console.error('Error loading more messages:', error);
-            set({ isLoadingMoreMessages: false });
-          }
-        },
-        
-        // Send a message
-        sendMessage: (content, attachments = []) => {
-          const { currentRoomId } = get();
-          if (!currentRoomId) return;
-          
-          // Create an optimistic message
-          const clientId = socketService.sendMessage(currentRoomId, content, attachments);
-          
-          const optimisticMessage: Message = {
-            id: \`pending-\${clientId}\`,
-            roomId: currentRoomId,
-            sender: {
-              // This should be the current user's info
-              id: 'current-user-id', // Replace with actual user ID
-              name: 'Current User', // Replace with actual user name
-              avatar: '/placeholder.svg', // Replace with actual user avatar
-            },
-            content,
-            attachments,
-            timestamp: new Date(),
-            readBy: [],
-            reactions: [],
-            edited: false,
-            deleted: false,
-            metadata: {
-              clientId,
-            },
-          };
-          
-          // Add to pending messages
-          set((state) => ({
-            pendingMessages: {
-              ...state.pendingMessages,
-              [currentRoomId]: [...(state.pendingMessages[currentRoomId] || []), optimisticMessage],
-            },
-          }));
-        },
-        
-        // Set typing indicator
-        setTyping: (isTyping) => {
-          const { currentRoomId } = get();
-          if (!currentRoomId) return;
-          
-          socketService.sendTyping(currentRoomId, isTyping);
-        },
-        
-        // Mark messages as read
-        markMessagesAsRead: async (messageIds) => {
-          const { currentRoomId } = get();
-          if (!currentRoomId) return;
-          
-          try {
-            // Call API to mark messages as read
-            await fetch(\`/api/rooms/\${currentRoomId}/read\`, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ messageIds }),
-            });
-          } catch (error) {
-            console.error('Error marking messages as read:', error);
-          }
-        },
-        
-        // Handle new message from socket
-        handleNewMessage: (message) => {
-          const { pendingMessages } = get();
-          const roomId = message.roomId;
-          
-          // Check if this is a confirmation of a pending message
-          const isPendingMessage = message.metadata?.clientId && 
-            pendingMessages[roomId]?.some(m => m.metadata?.clientId === message.metadata?.clientId);
-          
-          set((state) => {
-            // Add message to the room
-            const updatedMessages = {
-              ...state.messagesByRoom,
-              [roomId]: [...(state.messagesByRoom[roomId] || []), message],
-            };
-            
-            // If this was a pending message, remove it from pending
-            let updatedPendingMessages = state.pendingMessages;
-            if (isPendingMessage) {
-              updatedPendingMessages = {
-                ...state.pendingMessages,
-                [roomId]: state.pendingMessages[roomId]?.filter(
-                  m => m.metadata?.clientId !== message.metadata?.clientId
-                ) || [],
-              };
-            }
-            
-            return {
-              messagesByRoom: updatedMessages,
-              pendingMessages: updatedPendingMessages,
-            };
-          });
-        },
-        
-        // Handle typing indicator
-        handleUserTyping: (data) => {
-          const { typingUsers } = get();
-          const roomId = data.userId.split(':')[1]; // Assuming format "room:123"
-          
-          set((state) => {
-            // Update or add typing indicator
-            const roomTypingUsers = state.typingUsers[roomId] || [];
-            const userIndex = roomTypingUsers.findIndex(u => u.userId === data.userId);
-            
-            let updatedTypingUsers;
-            if (userIndex >= 0) {
-              // Update existing user
-              if (data.isTyping) {
-                updatedTypingUsers = [
-                  ...roomTypingUsers.slice(0, userIndex),
-                  data,
-                  ...roomTypingUsers.slice(userIndex + 1),
-                ];
-              } else {
-                // Remove user if not typing
-                updatedTypingUsers = [
-                  ...roomTypingUsers.slice(0, userIndex),
-                  ...roomTypingUsers.slice(userIndex + 1),
-                ];
-              }
-            } else if (data.isTyping) {
-              // Add new typing user
-              updatedTypingUsers = [...roomTypingUsers, data];
-            } else {
-              updatedTypingUsers = roomTypingUsers;
-            }
-            
-            return {
-              typingUsers: {
-                ...state.typingUsers,
-                [roomId]: updatedTypingUsers,
-              },
-            };
-          });
-        },
-        
-        // Handle user joined event
-        handleUserJoined: (data) => {
-          const roomId = data.userId.split(':')[1]; // Assuming format "room:123"
-          
-          set((state) => {
-            const roomUsers = state.onlineUsers[roomId] || [];
-            
-            // Check if user is already in the list
-            if (roomUsers.some(u => u.id === data.userId)) {
-              return state;
-            }
-            
-            // Add user to online users
-            return {
-              onlineUsers: {
-                ...state.onlineUsers,
-                [roomId]: [
-                  ...roomUsers,
-                  {
-                    id: data.userId,
-                    name: data.username,
-                    avatar: '/placeholder.svg', // Default avatar
-                  },
-                ],
-              },
-            };
-          });
-        },
-        
-        // Handle user left event
-        handleUserLeft: (data) => {
-          const roomId = data.userId.split(':')[1]; // Assuming format "room:123"
-          
-          set((state) => {
-            const roomUsers = state.onlineUsers[roomId] || [];
-            
-            // Remove user from online users
-            return {
-              onlineUsers: {
-                ...state.onlineUsers,
-                [roomId]: roomUsers.filter(u => u.id !== data.userId),
-              },
-              // Also remove from typing users if they were typing
-              typingUsers: {
-                ...state.typingUsers,
-                [roomId]: (state.typingUsers[roomId] || []).filter(u => u.userId !== data.userId),
-              },
-            };
-          });
-        },
-        
-        // Handle messages read event
-        handleMessagesRead: (data) => {
-          const { currentRoomId } = get();
-          if (!currentRoomId) return;
-          
-          set((state) => {
-            // Update read status for messages
-            const roomMessages = state.messagesByRoom[currentRoomId] || [];
-            const updatedMessages = roomMessages.map(message => {
-              if (data.messageIds.includes(message.id) && !message.readBy.includes(data.userId)) {
-                return {
-                  ...message,
-                  readBy: [...message.readBy, data.userId],
-                };
-              }
-              return message;
-            });
-            
-            return {
-              messagesByRoom: {
-                ...state.messagesByRoom,
-                [currentRoomId]: updatedMessages,
-              },
-            };
-          });
-        },
-      }),
-      {
-        name: 'reflect-chat-storage',
-        partialize: (state) => ({
-          // Only persist messages, not loading states or callbacks
-          messagesByRoom: state.messagesByRoom,
-        }),
-      }
-    )
+  const KeyboardKey = ({ children }: { children: string }) => (
+    <kbd className="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">
+      {children}
+    </kbd>
   )
-);
 
-// Initialize socket event handlers
-socketService.on('new-message', useChatStore.getState().handleNewMessage);
-socketService.on('user-typing', useChatStore.getState().handleUserTyping);
-socketService.on('user-joined', useChatStore.getState().handleUserJoined);
-socketService.on('user-left', useChatStore.getState().handleUserLeft);
-socketService.on('messages-read', useChatStore.getState().handleMessagesRead);
+  return (
+    <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="mb-8">
+        <div className="flex items-center gap-2 mb-4">
+          <Keyboard className="h-8 w-8 text-blue-600" />
+          <h1 className="text-3xl font-bold">Keyboard Shortcuts</h1>
+        </div>
+        <p className="text-lg text-muted-foreground">
+          Master Reflect with these keyboard shortcuts to boost your productivity and streamline your workflow.
+        </p>
+      </div>
 
-export default useChatStore;`}
-                </pre>
+      <div className="mb-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+        <div className="flex items-center gap-2 mb-2">
+          <Command className="h-5 w-5 text-blue-600" />
+          <h3 className="font-semibold text-blue-900 dark:text-blue-100">Platform Note</h3>
+        </div>
+        <p className="text-sm text-blue-800 dark:text-blue-200">
+          On Windows and Linux, <kbd className="px-1 py-0.5 text-xs bg-blue-100 dark:bg-blue-800 rounded">Cmd</kbd> is
+          replaced with <kbd className="px-1 py-0.5 text-xs bg-blue-100 dark:bg-blue-800 rounded">Ctrl</kbd>.
+          Alternative shortcuts for Windows are shown where different.
+        </p>
+      </div>
+
+      <div className="grid gap-6">
+        {shortcutCategories.map((category, index) => (
+          <Card key={index}>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <category.icon className="h-5 w-5" />
+                {category.title}
+              </CardTitle>
+              <CardDescription>Essential shortcuts for {category.title.toLowerCase()}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                {category.shortcuts.map((shortcut, shortcutIndex) => (
+                  <div key={shortcutIndex} className="flex items-center justify-between py-2">
+                    <span className="text-sm">{shortcut.description}</span>
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1">
+                        {shortcut.keys.map((key, keyIndex) => (
+                          <div key={keyIndex} className="flex items-center gap-1">
+                            <KeyboardKey>{key}</KeyboardKey>
+                            {keyIndex < shortcut.keys.length - 1 && (
+                              <span className="text-xs text-muted-foreground">+</span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                      {shortcut.windows && (
+                        <>
+                          <span className="text-xs text-muted-foreground mx-2">|</span>
+                          <div className="flex items-center gap-1">
+                            {shortcut.windows.map((key, keyIndex) => (
+                              <div key={keyIndex} className="flex items-center gap-1">
+                                <KeyboardKey>{key}</KeyboardKey>
+                                {keyIndex < shortcut.windows.length - 1 && (
+                                  <span className="text-xs text-muted-foreground">+</span>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
-            </TabsContent>
-            <TabsContent value="javascript" className="mt-4">
-              <div className="bg-black/50 p-4 rounded-md border border-purple-500/20 font-mono text-sm">
-                <pre className="text-gray-300 whitespace-pre-wrap">
-                  {`// lib/stores/chat-store.js
-import { create } from 'zustand';
-import { devtools, persist } from 'zustand/middleware';
-import socketService from '@/lib/socket-service';
-import { fetchMessages } from '@/lib/api';
+            </CardContent>
+          </Card>
+        ))}
+      </div>
 
-const useChatStore = create(
-  devtools(
-    persist(
-      (set, get) => ({
-        // Initial state
-        currentRoomId: null,
-        messagesByRoom: {},
-        pendingMessages: {},
-        typingUsers: {},
-        onlineUsers: {},
-        isLoadingMessages: false,
-        isLoadingMoreMessages: false,
-        
-        // Set current room and join it
-        setCurrentRoom: (roomId) => {
-          set({ currentRoomId: roomId });
-          socketService.joinRoom(roomId);
-          
-          // Initialize room data if it doesn't exist
-          set((state) => ({
-            messagesByRoom: {
-              ...state.messagesByRoom,
-              [roomId]: state.messagesByRoom[roomId] || [],
-            },
-            pendingMessages: {
-              ...state.pendingMessages,
-              [roomId]: state.pendingMessages[roomId] || [],
-            },
-            typingUsers: {
-              ...state.typingUsers,
-              [roomId]: state.typingUsers[roomId] || [],
-            },
-            onlineUsers: {
-              ...state.onlineUsers,
-              [roomId]: state.onlineUsers[roomId] || [],
-            },
-          }));
-          
-          // Load messages for this room
-          get().loadMessages(roomId);
-        },
-        
-        // Load messages for a room
-        loadMessages: async (roomId) => {
-          set({ isLoadingMessages: true });
-          
-          try {
-            const messages = await fetchMessages(roomId);
-            
-            set((state) => ({
-              messagesByRoom: {
-                ...state.messagesByRoom,
-                [roomId]: messages,
-              },
-              isLoadingMessages: false,
-            }));
-          } catch (error) {
-            console.error('Error loading messages:', error);
-            set({ isLoadingMessages: false });
-          }
-        },
-        
-        // Load more messages (pagination)
-        loadMoreMessages: async (roomId, beforeTimestamp) => {
-          set({ isLoadingMoreMessages: true });
-          
-          try {
-            const messages = await fetchMessages(roomId, { before: beforeTimestamp });
-            
-            set((state) => ({
-              messagesByRoom: {
-                ...state.messagesByRoom,
-                [roomId]: [...messages, ...state.messagesByRoom[roomId]],
-              },
-              isLoadingMoreMessages: false,
-            }));
-          } catch (error) {
-            console.error('Error loading more messages:', error);
-            set({ isLoadingMoreMessages: false });
-          }
-        },
-        
-        // Send a message
-        sendMessage: (content, attachments = []) => {
-          const { currentRoomId } = get();
-          if (!currentRoomId) return;
-          
-          // Create an optimistic message
-          const clientId = socketService.sendMessage(currentRoomId, content, attachments);
-          
-          const optimisticMessage = {
-            id: \`pending-\${clientId}\`,
-            roomId: currentRoomId,
-`}</pre></div></TabsContent></Tabs></div></div>
-    </>
-  );
+      <div className="mt-8">
+        <Card>
+          <CardHeader>
+            <CardTitle>Customizing Shortcuts</CardTitle>
+            <CardDescription>Personalize your keyboard shortcuts to match your workflow</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <h4 className="font-semibold mb-2">How to Customize</h4>
+              <ol className="list-decimal list-inside space-y-2 text-sm">
+                <li>
+                  Open Reflect preferences with <KeyboardKey>Cmd</KeyboardKey> + <KeyboardKey>,</KeyboardKey>
+                </li>
+                <li>Navigate to the "Keyboard Shortcuts" section</li>
+                <li>Click on any shortcut to edit it</li>
+                <li>Press your desired key combination</li>
+                <li>Save your changes</li>
+              </ol>
+            </div>
+            <Separator />
+            <div>
+              <h4 className="font-semibold mb-2">Tips for Custom Shortcuts</h4>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>Avoid conflicts with system shortcuts</li>
+                <li>Use memorable combinations that make sense to you</li>
+                <li>Consider your most-used features for the easiest shortcuts</li>
+                <li>Test shortcuts in different contexts to ensure they work everywhere</li>
+              </ul>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="mt-8 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+        <h3 className="font-semibold text-green-900 dark:text-green-100 mb-2">Pro Tip</h3>
+        <p className="text-sm text-green-800 dark:text-green-200">
+          Print this page or bookmark it for quick reference while you're learning the shortcuts. Most users find they
+          can memorize their most-used shortcuts within a week of regular use.
+        </p>
+      </div>
+    </div>
+  )
 }

@@ -1,25 +1,36 @@
-import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+"Client"
 
-export default function ClientImplementationPage() {
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+export default function DailyJournalingPage() {
   return (
-    <><div className="py-8">
+    <>
+      <div className="py-8">{/* Content inside the div */}</div>
       <div className="mb-8">
-        <Link href="/docs/real-time-chat/server-setup" className="text-purple-400 hover:text-purple-300 flex items-center mb-2">
+        <Link
+          href="/docs/real-time-chat/server-setup"
+          className="text-purple-400 hover:text-purple-300 flex items-center mb-2"
+        >
           <ArrowLeft className="mr-1 h-4 w-4" /> Back to Server Setup
         </Link>
-        <h1 className="text-4xl font-bold mb-6 purple-gradient-text">Client Implementation</h1>
+        <h1 className="text-4xl font-bold mb-6 purple-gradient-text">
+          Client Implementation
+        </h1>
         <p className="text-xl text-gray-300 mb-6">
-          Learn how to implement the client-side components of a real-time chat system in your React application.
+          Learn how to implement the client-side components of a real-time chat
+          system in your React application.
         </p>
       </div>
-
       <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 purple-gradient-text">Setting Up the Socket.IO Client</h2>
+        <h2 className="text-2xl font-bold mb-4 purple-gradient-text">
+          Setting Up the Socket.IO Client
+        </h2>
         <p className="text-gray-300 mb-6">
-          The client-side implementation of our real-time chat system involves connecting to the WebSocket server,
-          managing chat state, and providing a responsive user interface. We'll use Socket.IO client with React and
+          The client-side implementation of our real-time chat system involves
+          connecting to the WebSocket server, managing chat state, and providing
+          a responsive user interface. We'll use Socket.IO client with React and
           Zustand for state management.
         </p>
 
@@ -229,14 +240,11 @@ const socketService = new SocketService();
 export default socketService;`}
                 </pre>
               </div>
-              </TabsContent>
-            </Tabs>
-            <TabsContent value="javascript" className="mt-4">
-              {/* Add content here */}
             </TabsContent>
-            <div className="bg-black/50 p-4 rounded-md border border-purple-500/20 font-mono text-sm">
-              <pre className="text-gray-300 whitespace-pre-wrap">
-                {`// lib/socket-service.js
+            <TabsContent value="javascript" className="mt-4">
+              <div className="bg-black/50 p-4 rounded-md border border-purple-500/20 font-mono text-sm">
+                <pre className="text-gray-300 whitespace-pre-wrap">
+                  {`// lib/socket-service.js
 import { io } from 'socket.io-client';
 import { getAuthToken } from '@/lib/auth';
 
@@ -364,16 +372,19 @@ class SocketService {
 const socketService = new SocketService();
 
 export default socketService;`}
-              </pre>
-            </div>
-          </TabsContent>
-        </Tabs>
+                </pre>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
       </div>
-    </div><div className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 purple-gradient-text">Chat State Management</h2>
+      <div className="mb-12">
+        <h2 className="text-2xl font-bold mb-4 purple-gradient-text">
+          Chat State Management
+        </h2>
         <p className="text-gray-300 mb-6">
-          Next, let's create a Zustand store to manage our chat state. This will handle messages, typing indicators, and
-          user presence:
+          Next, let's create a Zustand store to manage our chat state. This will
+          handle messages, typing indicators, and user presence:
         </p>
 
         <div className="feature-card mb-8">
@@ -521,32 +532,7 @@ const useChatStore = create<ChatState>()(
           
           const optimisticMessage: Message = {
             id: \`pending-\${clientId}\`,
-                roomId: currentRoomId,
-                sender: {
-                  id: 'current-user-id', // Replace with actual user ID
-                  name: 'Current User', // Replace with actual user name
-                  avatar: '/placeholder.svg', // Replace with actual user avatar
-                },
-                content,
-                attachments,
-                timestamp: new Date(),
-                readBy: [],
-                reactions: [],
-                edited: false,
-                deleted: false,
-                metadata: {
-                  clientId,
-                },
-              };
-              
-              // Add to pending messages
-              set((state) => ({
-                pendingMessages: {
-                  ...state.pendingMessages,
-                  [currentRoomId]: [...(state.pendingMessages[currentRoomId] || []), optimisticMessage],
-                },
-              }));
-            },
+            roomId: currentRoomId,
             sender: {
               // This should be the current user's info
               id: 'current-user-id', // Replace with actual user ID
@@ -878,5 +864,14 @@ const useChatStore = create(
           
           const optimisticMessage = {
             id: \`pending-\${clientId}\`,
-</div></div></div></div></div></div>
-`}</div></div></div></div></div></div>`
+            roomId: currentRoomId,
+`}
+                </pre>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </div>
+    </>
+  );
+}
