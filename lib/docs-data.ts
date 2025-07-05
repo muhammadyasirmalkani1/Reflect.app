@@ -1,3 +1,6 @@
+"Client";
+
+import React from "react";
 export const docsCategories = [
   {
     title: "Getting Started",
@@ -12,7 +15,7 @@ export const docsCategories = [
     title: "Features",
     items: [
       { title: "Note Taking", href: "/docs/features/note-taking" },
-      { title: "AI Assistant", href: "/docs/features/ai-assistant" },
+      { title: "AI ChatGPT", href: "/docs/features/ai-assistant" },
       { title: "Connections", href: "/docs/features/connections" },
       { title: "Search", href: "/docs/features/search" },
     ],
@@ -118,7 +121,7 @@ export const videoTutorials = {
           title: "Introduction to Reflect",
           description:
             "This introductory tutorial gives you an overview of Reflect and its core features. Learn how to navigate the interface, create your first note, and understand the basic concepts.",
-          videoUrl: "/videos/intro-to-reflect.mp4",
+          videoUrl: "/videos/Capilot.mp4",
           thumbnailUrl: "/placeholder.svg?height=720&width=1280",
           duration: "5:32",
           topics: [

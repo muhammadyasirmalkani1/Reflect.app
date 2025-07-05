@@ -1,3 +1,6 @@
+"Client";
+
+import React from "react";
 import { v4 as uuidv4 } from "uuid"
 import { subDays, subHours, subMinutes } from "date-fns"
 
@@ -73,7 +76,7 @@ export function generateMockTickets(count: number) {
     const unreadCount = status === "open" ? Math.floor(Math.random() * 5) : 0
 
     // Generate 1-3 random tags
-    const ticketTags = []
+    const ticketTags: string[] = []
     const tagCount = Math.floor(Math.random() * 3) + 1
     for (let j = 0; j < tagCount; j++) {
       const tag = tags[Math.floor(Math.random() * tags.length)]
