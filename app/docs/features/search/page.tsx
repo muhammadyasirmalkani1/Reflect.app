@@ -5,22 +5,20 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 
-export default function AIAssistantPage() {
+export default function SearchPage() {
   return (
     <div className="py-8">
       <div className="mb-8">
         <Link
-          href="/docs/features/note-taking"
+          href="/docs/features/connections"
           className="text-purple-400 hover:text-purple-300 flex items-center mb-2"
         >
-          <ArrowLeft className="mr-1 h-4 w-4" /> Back to Note-Taking
+          <ArrowLeft className="mr-1 h-4 w-4" /> Back to Connections
         </Link>
-        <h1 className="text-4xl font-bold mb-6 purple-gradient-text">
-          AI CHatGPT
-        </h1>
+        <h1 className="text-4xl font-bold mb-6 purple-gradient-text">Search</h1>
         <p className="text-xl text-gray-300 mb-6">
-          Reflect's AI CHatGPT helps you organize your thoughts, generate ideas,
-          and make connections between concepts.
+          Reflect's AI helps you organize your thoughts, generate ideas, and
+          make connections between concepts.
         </p>
       </div>
 
@@ -33,9 +31,9 @@ export default function AIAssistantPage() {
           Overview
         </h2>
         <p className="text-gray-300 mb-4">
-          The AI assistant is one of Reflect's most powerful features. It uses
-          advanced natural language processing to understand your notes and
-          provide intelligent suggestions, summaries, and connections.
+          The AI is one of Reflect's most powerful features. It uses advanced
+          natural language processing to understand your notes and provide
+          intelligent suggestions, summaries, and connections.
         </p>
         <p className="text-gray-300 mb-6">
           Unlike traditional note-taking apps, Reflect doesn't just store your
@@ -268,9 +266,9 @@ export default function AIAssistantPage() {
           <div className="feature-card mb-8">
             <h4 className="text-lg font-bold mb-2">Pro Tip</h4>
             <p className="text-gray-300">
-              You can customize the AI assistant's behavior in Settings → AI
-              Assistant. This allows you to adjust the creativity level,
-              response length, and other parameters to suit your preferences.
+              You can customize the AI chat behavior in Settings → AI Assistant.
+              This allows you to adjust the creativity level, response length,
+              and other parameters to suit your preferences.
             </p>
           </div>
         </div>

@@ -1,36 +1,45 @@
-"Client";
+"client";
 
-import React from "react";
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft, ArrowRight } from "lucide-react"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export default function ServerSetupPage() {
+export default function KnowledgeBasePage() {
   return (
     <div className="py-8">
       <div className="mb-8">
-        <Link href="/docs/real-time-chat" className="text-purple-400 hover:text-purple-300 flex items-center mb-2">
+        <Link
+          href="/docs/real-time-chat"
+          className="text-purple-400 hover:text-purple-300 flex items-center mb-2"
+        >
           <ArrowLeft className="mr-1 h-4 w-4" /> Back to Real-Time Chat
         </Link>
-        <h1 className="text-4xl font-bold mb-6 purple-gradient-text">Server Setup for Real-Time Chat</h1>
+        <h1 className="text-4xl font-bold mb-6 purple-gradient-text">
+          Server Setup for Real-Time Chat
+        </h1>
         <p className="text-xl text-gray-300 mb-6">
-          Learn how to set up a robust WebSocket server for handling real-time chat communications.
+          Learn how to set up a robust WebSocket server for handling real-time
+          chat communications.
         </p>
       </div>
 
       <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 purple-gradient-text">Setting Up the WebSocket Server</h2>
+        <h2 className="text-2xl font-bold mb-4 purple-gradient-text">
+          Setting Up the WebSocket Server
+        </h2>
         <p className="text-gray-300 mb-6">
-          The server component of our real-time chat system is responsible for managing WebSocket connections,
-          authenticating users, and relaying messages between clients. We'll use Socket.IO with Express to create a
+          The server component of our real-time chat system is responsible for
+          managing WebSocket connections, authenticating users, and relaying
+          messages between clients. We'll use Socket.IO with Express to create a
           robust WebSocket server.
         </p>
 
         <div className="feature-card mb-8">
           <h3 className="text-xl font-bold mb-3">Basic Server Setup</h3>
           <p className="text-gray-300 mb-4">
-            Let's start by creating a basic Express server with Socket.IO integration:
+            Let's start by creating a basic Express server with Socket.IO
+            integration:
           </p>
 
           <Tabs defaultValue="javascript" className="mb-6">
@@ -62,7 +71,7 @@ const io = new Server(server, {
 });
 
 // MongoDB connection for message persistence
-const mongoClient = new MongoClient(process.env.MONGODB_URI || 'mongodb://localhost:27017/reflect');
+const mongoClient = new MongoClient(process.env.MONGODB_URI || 'mongodb://localhost:3000/reflect');
 
 async function main() {
   // Connect to MongoDB
@@ -382,45 +391,96 @@ main().catch(console.error);`}
           </Tabs>
 
           <p className="text-gray-300 mt-6">
-            This server setup provides the foundation for our real-time chat system. It includes:
+            This server setup provides the foundation for our real-time chat
+            system. It includes:
           </p>
           <ul className="space-y-2 text-gray-300 mt-4">
             <li className="flex items-start">
               <div className="w-5 h-5 rounded-full bg-purple-900/30 flex items-center justify-center mr-3 mt-1">
-                <svg className="w-3 h-3 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-3 h-3 text-purple-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
               </div>
               <span>WebSocket server with Socket.IO</span>
             </li>
             <li className="flex items-start">
               <div className="w-5 h-5 rounded-full bg-purple-900/30 flex items-center justify-center mr-3 mt-1">
-                <svg className="w-3 h-3 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-3 h-3 text-purple-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
               </div>
               <span>Authentication middleware</span>
             </li>
             <li className="flex items-start">
               <div className="w-5 h-5 rounded-full bg-purple-900/30 flex items-center justify-center mr-3 mt-1">
-                <svg className="w-3 h-3 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-3 h-3 text-purple-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
               </div>
               <span>Room-based messaging</span>
             </li>
             <li className="flex items-start">
               <div className="w-5 h-5 rounded-full bg-purple-900/30 flex items-center justify-center mr-3 mt-1">
-                <svg className="w-3 h-3 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-3 h-3 text-purple-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
               </div>
               <span>Typing indicators</span>
             </li>
             <li className="flex items-start">
               <div className="w-5 h-5 rounded-full bg-purple-900/30 flex items-center justify-center mr-3 mt-1">
-                <svg className="w-3 h-3 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-3 h-3 text-purple-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
               </div>
               <span>MongoDB integration for message persistence</span>
@@ -430,15 +490,20 @@ main().catch(console.error);`}
       </div>
 
       <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 purple-gradient-text">Message Persistence</h2>
+        <h2 className="text-2xl font-bold mb-4 purple-gradient-text">
+          Message Persistence
+        </h2>
         <p className="text-gray-300 mb-6">
-          Storing messages in a database is crucial for providing message history when users connect or reconnect to the
-          chat. Let's expand our server to include robust message persistence:
+          Storing messages in a database is crucial for providing message
+          history when users connect or reconnect to the chat. Let's expand our
+          server to include robust message persistence:
         </p>
 
         <div className="feature-card mb-8">
           <h3 className="text-xl font-bold mb-3">Message Database Schema</h3>
-          <p className="text-gray-300 mb-4">Here's a recommended schema for storing chat messages in MongoDB:</p>
+          <p className="text-gray-300 mb-4">
+            Here's a recommended schema for storing chat messages in MongoDB:
+          </p>
 
           <div className="bg-black/50 p-4 rounded-md border border-purple-500/20 font-mono text-sm">
             <pre className="text-gray-300 whitespace-pre-wrap">
@@ -493,8 +558,13 @@ main().catch(console.error);`}
         </div>
 
         <div className="feature-card mb-8">
-          <h3 className="text-xl font-bold mb-3">Message Retrieval Functions</h3>
-          <p className="text-gray-300 mb-4">Add these functions to your server to handle message history retrieval:</p>
+          <h3 className="text-xl font-bold mb-3">
+            Message Retrieval Functions
+          </h3>
+          <p className="text-gray-300 mb-4">
+            Add these functions to your server to handle message history
+            retrieval:
+          </p>
 
           <div className="bg-black/50 p-4 rounded-md border border-purple-500/20 font-mono text-sm">
             <pre className="text-gray-300 whitespace-pre-wrap">
@@ -587,51 +657,58 @@ app.post('/api/rooms/:roomId/read', authenticateUser, async (req, res) => {
       </div>
 
       <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 purple-gradient-text">Scaling Considerations</h2>
+        <h2 className="text-2xl font-bold mb-4 purple-gradient-text">
+          Scaling Considerations
+        </h2>
         <p className="text-gray-300 mb-4">
-          As your chat application grows, you'll need to consider scaling your WebSocket server. Here are some
-          strategies:
+          As your chat application grows, you'll need to consider scaling your
+          WebSocket server. Here are some strategies:
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <div className="feature-card">
             <h3 className="text-xl font-bold mb-3">Horizontal Scaling</h3>
             <p className="text-gray-300">
-              Use Socket.IO's Redis or MongoDB adapter to enable multiple server instances to work together. This allows
-              you to distribute the load across multiple servers.
+              Use Socket.IO's Redis or MongoDB adapter to enable multiple server
+              instances to work together. This allows you to distribute the load
+              across multiple servers.
             </p>
           </div>
 
           <div className="feature-card">
             <h3 className="text-xl font-bold mb-3">Connection Pooling</h3>
             <p className="text-gray-300">
-              Optimize database connections by implementing connection pooling to reduce the overhead of creating new
-              connections for each operation.
+              Optimize database connections by implementing connection pooling
+              to reduce the overhead of creating new connections for each
+              operation.
             </p>
           </div>
 
           <div className="feature-card">
             <h3 className="text-xl font-bold mb-3">Message Queues</h3>
             <p className="text-gray-300">
-              For high-volume scenarios, consider using a message queue like RabbitMQ or Kafka to handle message
-              processing and ensure delivery even during high load.
+              For high-volume scenarios, consider using a message queue like
+              RabbitMQ or Kafka to handle message processing and ensure delivery
+              even during high load.
             </p>
           </div>
 
           <div className="feature-card">
             <h3 className="text-xl font-bold mb-3">Caching</h3>
             <p className="text-gray-300">
-              Implement Redis caching for frequently accessed data like recent messages and user presence information to
-              reduce database load.
+              Implement Redis caching for frequently accessed data like recent
+              messages and user presence information to reduce database load.
             </p>
           </div>
         </div>
 
         <div className="feature-card">
-          <h3 className="text-xl font-bold mb-3">Load Balancing Configuration</h3>
+          <h3 className="text-xl font-bold mb-3">
+            Load Balancing Configuration
+          </h3>
           <p className="text-gray-300 mb-4">
-            When using multiple server instances behind a load balancer, ensure sticky sessions are enabled or use the
-            Socket.IO Redis adapter:
+            When using multiple server instances behind a load balancer, ensure
+            sticky sessions are enabled or use the Socket.IO Redis adapter:
           </p>
 
           <div className="bg-black/50 p-4 rounded-md border border-purple-500/20 font-mono text-sm">
@@ -653,17 +730,25 @@ Promise.all([pubClient.connect(), subClient.connect()]).then(() => {
       </div>
 
       <div className="flex justify-between items-center pt-8 border-t border-purple-900/20">
-        <Button asChild variant="outline" className="border-purple-500/30 hover:bg-purple-500/10">
+        <Button
+          asChild
+          variant="outline"
+          className="border-purple-500/30 hover:bg-purple-500/10"
+        >
           <Link href="/docs/real-time-chat">
             <ArrowLeft className="mr-2 h-4 w-4" /> Overview
           </Link>
         </Button>
-        <Button asChild variant="outline" className="border-purple-500/30 hover:bg-purple-500/10">
+        <Button
+          asChild
+          variant="outline"
+          className="border-purple-500/30 hover:bg-purple-500/10"
+        >
           <Link href="/docs/real-time-chat/client-implementation">
             Client Implementation <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
       </div>
     </div>
-  )
+  );
 }

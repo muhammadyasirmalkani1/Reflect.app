@@ -1,17 +1,16 @@
-"Client";
+"Client"
 
-import React from "react";
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ArrowLeft } from "lucide-react"
 
-export default function QuickStartPage() {
+export default function InstallationPage() {
   return (
     <div className="py-8">
       <div className="mb-8">
-        <Link href="/docs" className="text-purple-400 hover:text-purple-300 flex items-center mb-2">
-          <ArrowLeft className="mr-1 h-4 w-4" /> Back to Documentation
+        <Link href="/docs/quick-start" className="text-purple-400 hover:text-purple-300 flex items-center mb-2">
+          <ArrowLeft className="mr-1 h-4 w-4" /> Back to Quick Start
         </Link>
         <h1 className="text-4xl font-bold mb-6 purple-gradient-text">Quick Start Guide</h1>
         <p className="text-xl text-gray-300 mb-6">
@@ -70,7 +69,7 @@ export default function QuickStartPage() {
           <div className="relative purple-glow rounded-xl overflow-hidden border border-purple-500/20">
             <div className="absolute inset-0 bg-gradient-to-b from-purple-600/10 to-transparent"></div>
             <Image
-              src="/img/Computer.jpeg?height=300&width=500"
+              src="/img/Installation.png?height=300&width=500"
               alt="Reflect signup screen"
               width={500}
               height={300}
@@ -117,7 +116,7 @@ export default function QuickStartPage() {
           <div className="feature-card text-center">
             <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
               <svg className="w-12 h-12 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M21 18v3H3V3h18v3H10v12h11zm-9-2V8H5v8h7z" />
+                <path d="M2118v3H3V3h18v3H10v12h11zm-9-2V8H5v8h7z" />
               </svg>
             </div>
             <h3 className="text-lg font-bold mb-2">Web App</h3>
@@ -166,7 +165,7 @@ export default function QuickStartPage() {
           <div className="relative purple-glow rounded-xl overflow-hidden border border-purple-500/20">
             <div className="absolute inset-0 bg-gradient-to-b from-purple-600/10 to-transparent"></div>
             <Image
-              src="/img/Code-1.png?height=250&width=450"
+              src="/img/thinking.jpeg?height=300&width=500"
               alt="Creating a note in Reflect"
               width={500}
               height={300}
@@ -219,9 +218,9 @@ export default function QuickStartPage() {
       </div>
 
       <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 purple-gradient-text">4. Try the AI Assistant</h2>
+        <h2 className="text-2xl font-bold mb-4 purple-gradient-text">4. Try the AI</h2>
         <p className="text-gray-300 mb-4">
-          One of Reflect's most powerful features is the AI assistant. Let's try it out:
+          One of Reflect's most powerful features is the AI, Let's try it out:
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-8">
@@ -284,7 +283,7 @@ export default function QuickStartPage() {
           <div className="relative purple-glow rounded-xl overflow-hidden border border-purple-500/20">
             <div className="absolute inset-0 bg-gradient-to-b from-purple-600/10 to-transparent"></div>
             <Image
-              src="/img/Code-2.png?height=300&width=500"
+              src="/img/keyboard.jpeg?height=300&width=500"
               alt="Using the AI assistant in Reflect"
               width={500}
               height={300}
@@ -304,7 +303,7 @@ export default function QuickStartPage() {
           <div className="relative purple-glow rounded-xl overflow-hidden border border-purple-500/20">
             <div className="absolute inset-0 bg-gradient-to-b from-purple-600/10 to-transparent"></div>
             <Image
-              src="/img/Code-3.png?height=300&width=500"
+              src="/img/reflect.png?height=300&width=500"
               alt="Connecting notes in Reflect"
               width={500}
               height={300}
@@ -369,7 +368,7 @@ export default function QuickStartPage() {
             <h3 className="text-xl font-bold mb-3">Explore Features</h3>
             <p className="text-gray-400 mb-4">Discover all the powerful features Reflect has to offer.</p>
             <Button asChild variant="outline" className="w-full border-purple-500/30 hover:bg-purple-500/10">
-              <Link href="/docs/features">View Features</Link>
+              <Link href="/features">View Features</Link>
             </Button>
           </div>
 
